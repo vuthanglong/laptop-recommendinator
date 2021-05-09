@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <head>
+    <title>Laptop Recommendinator</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="/assets/styles/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      crossorigin="anonymous"
+    />
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.min.js"></script>
+    <script src="/assets/js/index.js"></script>
+  </head>
+  <body>
+    <!-- <h3 style="color: #ccc; font-size: 30px">No message yet..</h3>
+    <div class="message_holder"></div>
+
+    <form action="" method="POST">
+      <input type="text" class="username" placeholder="User Name" />
+      <input type="text" class="message" placeholder="Messages" />
+      <input type="submit" /> 
+    </form>
+    -->
+    <form action="" method="POST">
+      <div id="container">
+        <div id="title">
+          <!--<div id="suggestion_icon"><i class="fas fa-align-center"></i></div>-->
+          <div id="chatbot_name"><span>Chatbot AI</span></div>
+          <!--<div id="cancel_icon"><i class="fas fa-times"></i></div>-->
+        </div>
+        <div id="messages_display"></div>
+        <div id="input">
+          <div id="adjust_icon"><i class="fas fa-adjust"></i></div>
+          <input type="text" id="message" placeholder="Type a message" />
+          <div id="send_icon"><input type="submit" value=''> <i class="fas fa-reply"></i> </input></div>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
