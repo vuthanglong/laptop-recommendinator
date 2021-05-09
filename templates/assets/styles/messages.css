@@ -1,0 +1,117 @@
+#messages_display {
+  display: flex;
+  flex-direction: column;
+  padding: 0 5px 0 10px;
+  overflow-y: scroll;
+}
+
+#messages_display::-webkit-scrollbar-track {
+  background-color: var(--first_background_color);
+}
+
+#messages_display::-webkit-scrollbar {
+  width: 5px;
+}
+
+#messages_display::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background-color: var(--second_background_color);
+}
+
+.message {
+  display: grid;
+  grid-template-columns: 70%;
+  margin-bottom: 15px;
+}
+
+.message_AI {
+  justify-items: start;
+}
+
+.message_AI .message_content {
+  background-color: var(--second_background_color);
+  border-radius: 14px 14px 14px 0;
+  color: var(--first_font_color);
+}
+
+.message_client {
+  justify-items: end;
+  justify-content: end;
+}
+
+.message_client .message_content {
+  background: linear-gradient(135deg, #363553, #903775, #e8458b);
+  color: #fff;
+  border-radius: 14px 14px 0 14px;
+}
+
+.message_content {
+  max-width: 80%;
+  overflow-wrap: break-word;
+  padding: 9px 12px;
+  font-size: 1.6rem;
+  margin-bottom: 5px;
+}
+
+.message_time {
+  font-size: 1.2rem;
+  color: var(--second_font_color);
+}
+
+#input {
+  display: grid;
+  grid: 36px / 36px 1fr 36px;
+  align-content: center;
+  align-items: center;
+  background-color: var(--second_background_color);
+  border-radius: 50px;
+  margin: 2.5px 5px;
+  font-size: 2rem;
+  padding: 0 15px;
+  grid-gap: 10px;
+}
+
+#input > input {
+  border: none;
+  outline: none;
+  height: 100%;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  padding: 5px;
+  background-color: var(--first_background_color);
+  color: var(--first_font_color);
+}
+
+#input > input::placeholder {
+  color: var(--second_font_color);
+}
+
+#adjust_icon {
+  display: flex;
+  align-items: center;
+  background: var(--third_background_color);
+  height: 100%;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+#adjust_icon > i {
+  margin: auto;
+  color: var(--third_font_color);
+  font-size: 2.5rem;
+}
+
+#send_icon {
+  display: flex;
+  align-items: center;
+  /*background: linear-gradient(to left, #C57CAC 0%, #52096C 100%);*/
+  background: linear-gradient(135deg, #363553, #903775, #e8458b);
+  height: 100%;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+#send_icon > i {
+  color: #fff;
+  margin: auto;
+}
