@@ -1,0 +1,216 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --first_background_color: #fff;
+    --second_background_color: #eee;
+    --third_background_color: #fff;
+    --first_font_color: #222222;
+    --second_font_color: #777;
+    --third_font_color: #363553;
+}
+
+[data-theme="dark"] {
+    --first_background_color: #222222;
+    --second_background_color: #4F4F4F;
+    --third_background_color: linear-gradient(135deg, #363553, #903775, #e8458b); 
+    --first_font_color: #fff;
+    --second_font_color: #eee;
+    --third_font_color: #fff;
+}
+
+html, body {
+    height: 100%;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #DCDCDC;
+    font-size: 10px;
+}
+
+body {
+    display: grid;
+    place-items: center;
+}
+
+#container {
+    display: grid;
+    grid: 70px 1fr 60px / 1fr;
+    min-width: 250px;
+    max-width: 400px;
+    max-height: 600px;
+    width: 100%;
+    height: 80vh;
+    background-color: var(--first_background_color);
+    border-radius: 40px;
+    padding: 10px;
+     
+}
+
+#title {
+    display: grid;
+    /*grid: 36px / 36px 1fr 36px;*/
+    grid: 36px / 1fr;
+    align-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #211551 0%, #AF4A92 100%);
+    color: #fff;
+    font-weight: bold;
+    font-size: 2rem;
+    border-radius: 30px 30px 10px 10px;
+    box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.75);
+    padding: 0 25px;
+    margin-bottom: 5px;
+}
+
+/*#suggestion_icon {
+    display: flex;
+    align-items: center;
+}
+
+#suggestion_icon > i {
+    margin-right: auto;
+    cursor: pointer;
+}*/
+
+#chatbot_name {
+    display: flex;
+    align-items: center;
+}
+
+#chatbot_name > span {
+    margin: auto;
+}
+
+/*#cancel_icon {
+    display: flex;
+    align-items: center;
+}
+
+#cancel_icon > i {
+    margin-left: auto;
+    cursor: pointer;
+}*/
+
+#messages_display {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 0 5px 0 10px;
+    overflow-y: scroll;
+}
+
+#messages_display::-webkit-scrollbar-track {
+    background-color: var(--first_background_color);
+}
+
+#messages_display::-webkit-scrollbar {
+    width: 5px;
+}
+
+#messages_display::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background-color: var(--second_background_color);
+}
+
+.message {
+    display: grid;
+    grid-template-columns: 70%;
+    margin-bottom: 15px;
+}
+
+#message_AI {
+    justify-items: start;
+}
+
+#message_AI .message_content {
+    background-color: var(--second_background_color);
+    border-radius: 14px 14px 14px 0;
+    color: var(--first_font_color);
+}
+
+#message_client {
+    justify-items: end;
+    justify-content: end;
+}
+
+#message_client .message_content {
+    background: linear-gradient(135deg, #363553, #903775, #e8458b);
+    color: #fff;
+    border-radius: 14px 14px 0 14px;
+}
+
+.message_content {
+    padding: 9px 12px;
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+}
+
+.message_time {
+    font-size: 1.2rem;
+    color: var(--second_font_color);
+     
+}
+
+#input {
+    display: grid;
+    grid: 36px / 36px 1fr 36px;
+    align-content: center;
+    align-items: center;
+    background-color: var(--second_background_color);
+    border-radius: 50px;
+    margin: 2.5px 5px;
+    font-size: 2rem;
+    padding: 0 15px;
+    grid-gap: 10px;
+     
+}
+
+#input > input {
+    border: none;
+    outline: none;
+    height: 100%;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    padding: 5px;
+    background-color: var(--first_background_color);
+    color: var(--first_font_color);
+}
+
+#input > input::placeholder {
+    color: var(--second_font_color);
+}
+
+#adjust_icon {
+    display: flex;
+    align-items: center;
+    background: var(--third_background_color);
+    height: 100%;
+    border-radius: 50px;
+    cursor: pointer;
+     
+}
+
+#adjust_icon > i {
+    margin: auto;
+    color: var(--third_font_color);
+    font-size: 2.5rem;
+}
+
+#send_icon {
+    display: flex;
+    align-items: center;
+    /*background: linear-gradient(to left, #C57CAC 0%, #52096C 100%);*/
+    background: linear-gradient(135deg, #363553, #903775, #e8458b);
+    height: 100%;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+#send_icon > i {
+    color: #fff;
+    margin: auto;
+}
