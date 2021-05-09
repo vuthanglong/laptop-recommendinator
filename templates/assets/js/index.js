@@ -9,6 +9,12 @@ $(document).ready(function () {
       mode = true
     }
   })
+
+  function scrollToEnd(){
+        var scr = document.getElementById("messages_display");
+        scr.scrollTop = scr.scrollHeight;
+  }
+
   var socket = io.connect(
     window.location.protocol + '//' + document.domain + ':' + location.port
   )
@@ -17,7 +23,7 @@ $(document).ready(function () {
     socket.emit('connected', {
       data: 'User Connected',
     })
-    var form = $('form').on('submit', function (e) {
+    var form = $('form').click('submit', function (e) {
       e.preventDefault()
       let message = $('input#message').val()
       console.log($('input#message').val())
@@ -38,6 +44,7 @@ $(document).ready(function () {
         </div>
     `)
     }
+    scrollToEnd()
   })
   socket.on('bot response', function (msg) {
     if (typeof msg.response !== 'undefined') {
@@ -48,5 +55,6 @@ $(document).ready(function () {
         </div>
     `)
     }
+    scrollToEnd()
   })
 })

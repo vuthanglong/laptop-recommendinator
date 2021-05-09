@@ -52,10 +52,8 @@ input[type='reset'] {
 #container {
   display: grid;
   grid: 70px 1fr 60px / 1fr;
-  min-width: 250px;
-  max-width: 400px;
   max-height: 600px;
-  width: 100%;
+  width: 400px;
   height: 80vh;
   background-color: var(--first_background_color);
   border-radius: 40px;
@@ -68,7 +66,7 @@ input[type='reset'] {
   grid: 36px / 1fr;
   align-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #211551 0%, #af4a92 100%);
+  background: linear-gradient(135deg, #363553, #903775, #e8458b);
   color: #fff;
   font-weight: bold;
   font-size: 2rem;
