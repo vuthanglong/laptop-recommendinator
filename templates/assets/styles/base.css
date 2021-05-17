@@ -6,17 +6,17 @@
 
 :root {
   --first_background_color: #fff;
-  --second_background_color: #eee;
-  --third_background_color: #fff;
-  --first_font_color: #222222;
+  --second_background_color: #fff;
+  --third_background_color: #e5e7ea;
+  --first_font_color: #000000;
   --second_font_color: #777;
-  --third_font_color: #363553;
+  --third_font_color: #903775;
 }
 
 [data-theme='dark'] {
-  --first_background_color: #222222;
-  --second_background_color: #4f4f4f;
-  --third_background_color: linear-gradient(135deg, #363553, #903775, #e8458b);
+  --first_background_color: #24292e;
+  --second_background_color: #383f45;
+  --third_background_color: #454c52;
   --first_font_color: #fff;
   --second_font_color: #eee;
   --third_font_color: #fff;
@@ -37,6 +37,7 @@ body {
   display: grid;
   place-items: center;
 }
+
 button,
 input[type='submit'],
 input[type='reset'] {
@@ -50,41 +51,31 @@ input[type='reset'] {
 }
 
 #container {
-  display: grid;
-  grid: 70px 1fr 60px / 1fr;
-  max-height: 600px;
-  width: 400px;
-  height: 80vh;
+  position: relative;
+  width: 375px;
+  height: 600px;
   background-color: var(--first_background_color);
-  border-radius: 40px;
+  border-radius: 25px;
+  overflow: hidden;
   padding: 10px;
 }
 
 #title {
-  display: grid;
-  /*grid: 36px / 36px 1fr 36px;*/
-  grid: 36px / 1fr;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  width: 355px;
   align-content: center;
   align-items: center;
   background: linear-gradient(135deg, #363553, #903775, #e8458b);
   color: #fff;
   font-weight: bold;
   font-size: 2rem;
-  border-radius: 30px 30px 10px 10px;
+  border-radius: 20px 20px 10px 10px;
   box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.75);
   padding: 0 25px;
   margin-bottom: 5px;
 }
-
-/*#suggestion_icon {
-    display: flex;
-    align-items: center;
-}
-
-#suggestion_icon > i {
-    margin-right: auto;
-    cursor: pointer;
-}*/
 
 #chatbot_name {
   display: flex;
@@ -95,12 +86,88 @@ input[type='reset'] {
   margin: auto;
 }
 
-/*#cancel_icon {
-    display: flex;
-    align-items: center;
+.modal-container {
+    height: 250px;
+    background-color: var(--second_background_color);
+    padding: 25px;
+    border-radius: 25px 25px 0px 0px;
+    z-index: 50;
+    overflow: hidden;
+    display: none;
 }
 
-#cancel_icon > i {
-    margin-left: auto;
+.overlay {
+    position: fixed;
+    width: 375px;
+    height: 600px;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 25px;
+    z-index: 50;
+    display: none;
+}
+
+.product-container {
+    display: flex;
+    margin-block-end: 17px;
+    background-color: var(--third_background_color);
+    padding: 8px;
+    border-radius: 10px;
     cursor: pointer;
-}*/
+}
+
+.product-image {
+    width: 35%;
+    max-width: 60px;
+    height: 45px;
+    background-image: url('https://laptop88.vn/media/product/6105_18637_laptop_dell_inspiron_5502_n5i5310w_3.jpg');
+    background-repeat:no-repeat;
+    background-size: contain;
+    margin-right: 7px;
+}
+
+.product-info {
+    width: 75%;
+}
+
+.product-name {
+    font-size: 14px;
+    font-family: 'system-ui';
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--first_font_color);
+}
+
+.product-price {
+    font-size: 13px;
+    font-family: 'system-ui';
+    margin-top: 5px;
+    color: var(--second_font_color);
+}
+
+.modal-info-container {
+    width: 75%;
+    height: 250px;
+    background-color: #fff;
+    z-index: 100;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    padding: 20px 15px;
+    border-radius: 5px;
+    display: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+
+.modal-content {
+    overflow: auto;
+    height: 215px
+}
+
+.bottomToCenterAnimation {
+    transform: translate(-50%, -50%);
+}

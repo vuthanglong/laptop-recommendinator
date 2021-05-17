@@ -2,18 +2,69 @@ $(document).ready(function () {
   var mode = true
   $('#adjust_icon').click(function () {
     if (mode == true) {
-      document.documentElement.setAttribute('data-theme', 'dark')
+      setTimeout(() => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+      }, 50)
       mode = false
     } else {
-      document.documentElement.setAttribute('data-theme', 'light')
+      setTimeout(() => {
+        document.documentElement.setAttribute('data-theme', 'light')
+      }, 50)
       mode = true
     }
   })
 
   function scrollToEnd(){
-        var scr = document.getElementById("messages_display");
-        scr.scrollTop = scr.scrollHeight;
+    var scr = document.getElementById("messages_display");
+    scr.scrollTop = scr.scrollHeight;
   }
+
+  $("#question_selection_button").click(function() {
+    if( $('#modal').css('display') == 'none' ) {
+      setTimeout(() => {
+        $("#modal").css('display' , 'block');
+        $(".input").css('border-radius', '0 0 25px 25px')
+      }, 50)
+    }
+    else {
+      setTimeout(() => {
+        $("#modal").css('display' , 'none');
+        $(".input").css('border-radius', '25px')
+      }, 50)
+    }
+  })
+
+//
+  function closeQuestionSelection(){
+    if( $('#modal').css('display') == 'block' ) {
+      setTimeout(() => {
+        $("#modal").css('display' , 'none');
+        $(".input").css('border-radius', '25px')
+      }, 50)
+    }
+  }
+
+  $("#overlay").click(function(){
+    //close modal
+    setTimeout(() => {
+      $("#overlay").css('display' , 'none');
+      $("#modal-info").css('display' , 'none');
+      if($('#overlay').css('z-index') == '100') {
+        $("#overlay").css('z-index' , '50');
+      }
+    }, 50)
+  })
+
+  $("#info-btn").click(function(){
+    setTimeout(() => {
+      $("#modal").css('display' , 'none');
+      $(".input").css('border-radius', '25px')
+      $("#modal-info").css('display' , 'block');
+      $("#overlay").css('display' , 'block');
+      $("#overlay").css('z-index' , '100');
+      $("#modal-info").addClass('bottomToCenterAnimation')
+    }, 50)
+  })
 
   var socket = io.connect(
     window.location.protocol + '//' + document.domain + ':' + location.port
@@ -58,3 +109,4 @@ $(document).ready(function () {
     scrollToEnd()
   })
 })
+
