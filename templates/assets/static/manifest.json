@@ -1,0 +1,32 @@
+{
+  "short_name": "Chatbot",
+  "name": "Laptop Recommendinator",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "128x128",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "gooder-icon.ico",
+      "sizes": "128x128",
+      "type": "image/x-icon",
+      "purpose": "any"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "56x53",
+      "type": "image/png"
+    },
+    {
+      "src": "gooder-logo.png",
+      "sizes": "112x105",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

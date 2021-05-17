@@ -1,116 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
     <meta charset="UTF-8" />
+    <link rel="icon" href="/assets/static/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <head>
+    <link rel="apple-touch-icon" href="/assets/static/gooder-logo.png" />
+    <link rel="manifest" href="/assets/static/manifest.json" />
     <title>Laptop Recommendinator</title>
     <link
-        rel="stylesheet"
-        type="text/css"
-        media="screen"
-        href="/assets/styles/styles.css"
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="/assets/styles/styles.css"
     />
     <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        crossorigin="anonymous"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      crossorigin="anonymous"
     />
     <link
-        rel="stylesheet"
-        href="https://pro.fontawesome.com/releases/v5.15.1/css/all.css"
-        type="text/css"
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.15.1/css/all.css"
+      type="text/css"
     />
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.min.js"></script>
-    <script src="/assets/js/index.js"></script>
-    </head>
-    <body>
-        <!-- <h3 style="color: #ccc; font-size: 30px">No message yet..</h3>
-        <div class="message_holder"></div>
-
-        <form action="" method="POST">
-            <input type="text" class="username" placeholder="User Name" />
-            <input type="text" class="message" placeholder="Messages" />
-            <input type="submit" />
-        </form>
-        -->
-        <form action="" method="POST">
-            <div id="overlay" class="overlay"></div>
-            <div id="container">
-                <div id="title">
-                    <div id="adjust_icon">
-                        <i class="fas fa-adjust"></i>
-                    </div>
-                    <div id="chatbot_name">
-                        <span>Chatbot AI</span>
-                    </div>
-                    <div class="title-right-side">
-                        <div id="info-btn">
-                            <i class="fal fa-info-circle"></i>
-                        </div>
-                    </div>
-                    <div id="modal-info" class="modal-info-container">
-                        <div>Laptop Recommendinator</div>
-                    </div>
-                </div>
-
-                <div id="messages_display" class="scrollbar"></div>
-
-                <div class="footer">
-                    <div id="modal" class="modal-container">
-                        <div class="modal-content  scrollbar">
-                            <div class="product-container">
-                                <div class="product-image"></div>
-                                <div class="product-info">
-                                    <div class="product-name">Bàn phím máy tính Bàn phím máy tính Bàn phím máy tính</div>
-                                    <div class="product-price">100.000đ</div>
-                                </div>
-                            </div>
-                            <div class="product-container">
-                                <div class="product-image"></div>
-                                <div class="product-info">
-                                    <div class="product-name">Bàn phím máy tính Bàn phím máy tính Bàn phím máy tính</div>
-                                    <div class="product-price">100.000đ</div>
-                                </div>
-                            </div>
-                            <div class="product-container">
-                                <div class="product-image"></div>
-                                <div class="product-info">
-                                    <div class="product-name">Bàn phím máy tính Bàn phím máy tính Bàn phím máy tính</div>
-                                    <div class="product-price">100.000đ</div>
-                                </div>
-                            </div>
-                            <div class="product-container">
-                                <div class="product-image"></div>
-                                <div class="product-info">
-                                    <div class="product-name">Bàn phím máy tính Bàn phím máy tính Bàn phím máy tính</div>
-                                    <div class="product-price">100.000đ</div>
-                                </div>
-                            </div>
-                            <div class="product-container">
-                                <div class="product-image"></div>
-                                <div class="product-info">
-                                    <div class="product-name">Bàn phím máy tính Bàn phím máy tính Bàn phím máy tính</div>
-                                    <div class="product-price">100.000đ</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="input">
-                        <div id="question_selection_button">
-                            <i class="fas fa-align-center"></i>
-                        </div>
-                        <input type="text" id="message" autocomplete="off" placeholder="Type a message" />
-                        <div id="send_icon">
-                            <input type="submit" value=''>
-                                <i class="fas fa-reply"></i>
-                            </input>
-                        </div>
-                    </div>
-                </div>
+    <script src="/assets/js/index.js" type="module"></script>
+    <script src="/assets/js/socket.js" type="module"></script>
+  </head>
+  <body>
+    <div id="background"></div>
+    <form action="" method="POST">
+      <div id="overlay" class="overlay"></div>
+      <div id="container">
+        <div id="title">
+          <div id="adjust_icon">
+            <i class="fas fa-adjust"></i>
+          </div>
+          <div id="chatbot_name">
+            <span>Chatbot AI</span>
+          </div>
+          <div class="title-right-side">
+            <div id="info-btn">
+              <i class="fal fa-info-circle"></i>
             </div>
-        </form>
-    </body>
+          </div>
+          <div id="modal-info" class="modal-info-container">
+            <div>Laptop Recommendinator</div>
+          </div>
+        </div>
+
+        <div id="messages_display" class="scrollbar"></div>
+
+        <div class="footer">
+          <div id="modal" class="modal-container">
+            <div class="modal-content scrollbar">
+              <div class="product-container">
+                <div class="product-image"></div>
+                <div class="product-info">
+                  <div class="product-name">
+                    Bàn phím máy tính Bàn phím máy tính Bàn phím máy tính
+                  </div>
+                  <div class="product-price">100.000đ</div>
+                </div>
+              </div>
+              <div class="product-container">
+                <div class="product-image"></div>
+                <div class="product-info">
+                  <div class="product-name">
+                    Bàn phím máy tính Bàn phím máy tính Bàn phím máy tính
+                  </div>
+                  <div class="product-price">100.000đ</div>
+                </div>
+              </div>
+              <div class="product-container">
+                <div class="product-image"></div>
+                <div class="product-info">
+                  <div class="product-name">
+                    Bàn phím máy tính Bàn phím máy tính Bàn phím máy tính
+                  </div>
+                  <div class="product-price">100.000đ</div>
+                </div>
+              </div>
+              <div class="product-container">
+                <div class="product-image"></div>
+                <div class="product-info">
+                  <div class="product-name">
+                    Bàn phím máy tính Bàn phím máy tính Bàn phím máy tính
+                  </div>
+                  <div class="product-price">100.000đ</div>
+                </div>
+              </div>
+              <div class="product-container">
+                <div class="product-image"></div>
+                <div class="product-info">
+                  <div class="product-name">
+                    Bàn phím máy tính Bàn phím máy tính Bàn phím máy tính
+                  </div>
+                  <div class="product-price">100.000đ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="input">
+            <div id="question_selection_button">
+              <i class="fas fa-align-center"></i>
+            </div>
+            <input
+              type="text"
+              id="message"
+              autocomplete="off"
+              placeholder="Type a message"
+            />
+            <div id="send_icon">
+              <input type="submit" value="" />
+              <i class="fas fa-reply"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
 </html>
