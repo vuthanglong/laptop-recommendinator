@@ -41,6 +41,10 @@ $(document).ready(function () {
     }
   }
 
+  $('.question_content').click(function () {
+    closeQuestionSelection();
+  })
+
   $('#overlay').click(function () {
     //close modal
     setTimeout(() => {
