@@ -1,7 +1,18 @@
 import { prepareSocket } from './socket.js'
 
+const hintQuestions = [
+  'Hi em!',
+  'Em ăn cơm chưa?',
+  'Ngủ sớm vậy em?',
+  'Anh rất chào em!',
+  'Em muốn ăn gì nhỉ?',
+  'Em ăn tối trưa?',
+  'Em muốn chúng mình đi đâu?',
+  'Em ơi xong chưa?',
+  '"Cô ấy luôn luôn đúng và bạn là người sai."',
+]
+
 $(document).ready(function () {
-  prepareSocket()
   var mode = true
   $('#adjust_icon').click(function () {
     if (mode == true) {
@@ -15,6 +26,13 @@ $(document).ready(function () {
       }, 50)
       mode = true
     }
+  })
+  hintQuestions.forEach(function (e) {
+    $('.questions_container').append(`
+      <div class="question_container">
+        <div class="question_content">${e}</div>
+      </div>
+  `)
   })
 
   $('#question_selection_button').click(function () {
@@ -42,7 +60,7 @@ $(document).ready(function () {
   }
 
   $('.question_content').click(function () {
-    closeQuestionSelection();
+    closeQuestionSelection()
   })
 
   $('#overlay').click(function () {
@@ -66,4 +84,5 @@ $(document).ready(function () {
       $('#modal-info').addClass('bottomToCenterAnimation')
     }, 50)
   })
+  prepareSocket()
 })

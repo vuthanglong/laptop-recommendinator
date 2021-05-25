@@ -43,6 +43,14 @@ export function prepareSocket() {
     }
     scrollToEnd()
   })
+  $('.question_content').click(function (e) {
+    if ($(this).text())
+      socket.emit('my event', {
+        message: $(this).text(),
+        session_id: socket.id,
+      })
+    $('input#message').val('').focus()
+  })
 }
 
 function scrollToEnd() {

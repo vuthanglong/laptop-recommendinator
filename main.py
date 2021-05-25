@@ -2,6 +2,7 @@ from flask import Flask, render_template, send_from_directory
 from flask_socketio import SocketIO
 from datetime import datetime
 import random, os
+from model.main import chatBotResponse
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
@@ -18,14 +19,13 @@ def sessions():
 def send_assets(path):
     return send_from_directory('templates/assets', path)
 
-
 def messageReceived(methods=['GET', 'POST']):
     print('message was received!!!')
 
 
 @socketio.on('my event')
 def handle_my_custom_event(json, methods=['GET', 'POST']):
-    response = random.choice(messageList)
+    response = chatBotResponse(json['message'])
     current_time = datetime.now().strftime("%H:%M")
     print('received my event: ' + json['message'])
     socketio.emit('my response', {'message': json['message'], 'time': current_time}, to=json['session_id'], callback=messageReceived)
@@ -37,6 +37,7 @@ def handle_my_custom_event(json, methods=['GET', 'POST']):
 
 @socketio.on('connected')
 def handle_connected(json, methods=['GET', 'POST']):
+    print(chatBotResponse("alo"))
     print('Recieved from client: ' + str(json))
     print('ID: ' + json['session_id'])
 

@@ -1,0 +1,71 @@
+,Label,Response
+0,chào_hỏi chung_chung,"chào bạn, mình có thể giúp gì được cho bạn nhỉ?"
+1,chào_hỏi chung_chung,"xin chào, bạn muốn nhờ tôi tư vấn điều gì ạ?"
+2,chào_hỏi chung_chung,"chào {name}, làm ơn hãy đặt câu hỏi cho tôi?"
+3,chào_hỏi chung_chung,"chào bạn, mình có thể giải đáp mọi thắc mắc của bạn đấy"
+4,hỏi tình_trạng hoạt_động của cửa_hàng,cửa hàng hoạt động liên tục từ 7h sáng đến 17h chiều nhé bạn
+5,hỏi tình_trạng hoạt_động của cửa_hàng,"bạn có vấn đề gì thì cứ đặt câu hỏi ạ, bên mình hoạt động đến 17h chiều"
+6,hỏi tình_trạng hoạt_động của cửa_hàng,cửa hàng hoạt động đến 17h chiều cơ ạ
+7,yêu_cầu hỗ_trợ chung_chung,tôi rất sẵn lòng
+8,yêu_cầu hỗ_trợ chung_chung,bạn có vấn đề gì thế ạ
+9,yêu_cầu hỗ_trợ chung_chung,bạn cứ hỏi mình sẽ giải đáp cho bạn
+10,yêu_cầu hỗ_trợ chung_chung,mình sinh ra có sứ mệnh là để cho bạn hỏi mà 
+11,yêu_cầu hỗ_trợ chung_chung,tôi có thế giúp gì cho bạn ạ
+12,yêu_cầu hỗ_trợ chung_chung,bạn cần giúp gì ở tôi ạ
+13,xác_nhận cửa_hàng,"dạ đúng rồi ạ
+"
+14,xác_nhận cửa_hàng,"chính xác rồi, cửa hàng xxx kính chào quý khách"
+15,xác_nhận hệ_thống chatbot,Hệ thống chatbot thông minh của cửa hàng xxx xin chào
+16,xác_nhận hệ_thống chatbot,"dạ đúng rồi bạn nhé, bạn cần tôi giúp gì không ạ?"
+17,hình_thức mua_bán hàng,"bạn có thể đến mua hàng trực tiếp tại cửa hàng, đặt hàng online hoặc mua hàng trên các ứng dụng như
+tiki, lazada...
+"
+18,địa_chỉ chi_nhánh cửa_hàng,"cửa hàng mình có các chi nhánh:
+- Hà Nội: 144 Xuân Thủy
+- Đà Nẵng: 144 Xuân Thủy
+- HCM: 144 Xuân Thủy
+"
+19,hình_thức thanh_toán,"bạn có thể thanh toán trực tiếp tại quầy, chuyển khoản qua thẻ tín dụng hoặc thanh toán bằng ví momo, airpay..."
+20,đổi trả sản_phẩm,Trong trường máy của bạn có vấn đề gì trong vòng 15 ngày bạn có thể đổi sang sản phẩm khác hoàn toàn miễn phí
+21,mua hàng online,Khi bạn mua hàng online trong vòng 15 ngày sẽ có hàng. bạn nhận hàng và kiểm tra trước khi thanh toán
+22,yêu_cầu kiểm_tra lại,"Để bên mình kiểm tra lại giúp bạn, mình sẽ xem lại hệ thống giúp bạn ngay, mình xem lại và sẽ báo cho bạn sớm nhất có thể
+"
+23,bảo_hành - mở_đầu,Xin chào! Bạn có thể mô tả tình trạng hiện tại được không
+24,thời_hạn bảo_hành,Bạn có thể kiểm tra thời hạn bảo hành trên tem bảo hành được dán trên laptop.
+25,địa_điểm bảo_hành,"Bạn có thể đến các trung tâm bảo hành tại các địa chỉ sau:
+1. 144 Xuân Thủy, Cầu Giấy, Hà Nội
+2. 334 Nguyễn Trãi, Thanh Xuân, Hà Nội"
+26,tiến_độ bảo_hành,"Tùy thuộc vào tình trạng hỏng hóc của thiết bị mà thời gian bảo hành sẽ khác nhau, bạn sẽ nhận được cuộc gọi thông báo sau khi việc bảo hành đã hoàn tất."
+27,sau bảo_hành,"Sau khi bảo hành, laptop của bạn vẫn sẽ được hưởng chế độ bảo hành như bình thường."
+28,gia_hạn bảo_hành,Bạn có thể đến các cửa hàng trong hệ thống để gia hạn gói dịch vụ bảo hành.
+29,lịch_sử bảo_hành,Bạn có thể kiểm tra lịch sử bảo hành trong phiếu bảo hành .
+30,hết hạn bảo_hành,"Trong trường hợp laptop của bạn đã hết bảo hành, bạn có thể sử dụng dịch vụ bảo hành có trả phí."
+31,không bảo_hành,"Rất tiếc! Trường hợp của bạn không nằm trong phạm vi được bảo hành miễn phí. Tuy nhiên, bạn có thể sử dụng dịch vụ bảo hành mất phí. "
+32,quy_định được bảo_hành,"1. Có phiếu bảo hành/thẻ bảo hành/hóa đơn mua hàng.
+2. Tem bảo hành của nhà sản xuất / nhà phân phối.
+3. Máy tính xách tay còn trong thời hạn bảo hành.
+4. Máy tính xách tay phát sinh lỗi do nhà sản xuất."
+33,quy_định không được bảo_hành,"1.Máy bị hư hỏng do thiên tai, tai nạn hoặc côn trùng phá hoại.
+2. Máy tiếp xúc với chất lỏng hoặc đổ chất lỏng vào máy hoặc được bảo quản/sử dụng trong môi trường ẩm ướt.
+3.Sử dụng sai điện áp theo quy định của nhà sản xuất.
+4. Sản phẩm bị sét đánh, cháy nổ, bị biến dạng, bị gỉ sét ăn mòn.
+5.Các lỗi phát sinh do virus tin học.
+6.Dữ liệu bị mất do quá trình sử dụng / bảo hành không thuộc điều khoản bảo hành. Quý khách hàng nên sao lưu dữ liệu định kỳ và sao lưu dự phòng trước khi đem máy đi bảo hành.
+7.Việc mất phân vùng Recovery (phân vùng ổ cứng chứa dữ liệu hệ điều hành bản quyền) do quý khách hàng tự phân chia ổ đĩa cứng sẽ không được bảo hành. Chi phí khôi phục bản quyền cho hệ điều hành sẽ được tính tùy theo theo hãng.
+8. Tem bảo hành bị rách, bị sửa chữa, hoặc bị dán đè tem khác.
+9. Các hao mòn về kiểu dáng, vỏ thiết bị  do tác động của quá trình sử dụng.
+10.Các lỗi về phần mềm chỉ được hỗ trợ khắc phục, không thuộc phạm vi bảo hành.
+11.Lỗi mất password (nhận diện vân tay/khuôn mặt) do người sử dụng sẽ không được bảo hành. Chi phí khôi phục sẽ được tính tùy theo theo hãng."
+34,giá_thành,Laptop {lptp} có giá: {price}
+35,cấu_hình chung,Cấu hình của laptop {lptp} : {res}
+36,màn_hình,Laptop {lptp} sử dụng màn hình: {res}
+37,cpu,Laptop {lptp} sử dụng vi xử lý: {res}
+38,gpu,Laptop {lptp} sử dụng card đồ họa: {res}
+39,ram,Laptop {lptp} sử dụng ram: {res}
+40,ổ_cứng,Laptop {lptp} sử dụng phần cứng: {res}
+41,mua máy chơi game,Một số loại laptop gamming trong shop của hệ thống
+42,mua máy không xác_định,Bạn muốn mua laptop loại nào nhỉ
+43,mua máy vè ngoài,Một số loại laptop có bề ngoài đẹp mắt trong shop của hệ thống
+44,mua máy sinh_viên,"Một số loại laptop giá rẻ, cấu hình tốt dành cho sinh viên"
+45,mua máy đời cũ,Một số laptop secondhand trong hệ thống
+46,mua máy phổ_biến,Một số dòng máy phổ biến hiện nay
