@@ -1,3 +1,4 @@
+-f https://download.pytorch.org/whl/torch_stable.html
 absl-py==0.12.0
 astunparse==1.6.3
 bidict==0.21.2
@@ -63,7 +64,6 @@ tensorflow-estimator==2.5.0
 termcolor==1.1.0
 threadpoolctl==2.1.0
 torch==1.5.0+cpu
-torchvision==0.6.0+cpu
 tqdm==4.61.0
 typing-extensions==3.7.4.3
 urllib3==1.26.4
