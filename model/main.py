@@ -249,17 +249,28 @@ def responseText(text, model, dict_name_common, list_name_laptop, token, dict_en
     if lb in dict_type_1:
        ret_lap, ret_infor, ret_url = getListLapByName(df_lap, list_laptop, dict_type_1[lb])
        ret_text = returnText(df_check, lb, ret_lap, ret_infor, '1')
-       return ret_text, ret_url
+       return ret_text, ret_url, 1
     elif lb in dict_type_2:
        ret_lap, ret_url = getListLapByDemand(df_lap, dict_type_2[lb])
        ret_text = returnText(df_check, lb, ret_lap, tp = '1')
        ret_text = [*["Kết quả {} gợi ý cho laptop {}".format(len(ret_text), dict_type_2[lb].lower())], *ret_text]
-       return ret_text, ret_url
+       return ret_text, ret_url, 2
     elif lb == 'mua máy khoảng giá':
-       return returnTextByPrice(df_check, df_lap, list_price)
+       ret_lap, ret_url = returnTextByPrice(df_check, df_lap, list_price)
+       return ret_lap, ret_url, 2
     else:
-       return returnText(df_check, lb), None
+       return returnText(df_check, lb), None, 3
        
 def chatBotResponse(text):
-    text_list, url_list = responseText(text, model_check, dict_name_common, list_name_laptop, tokenizer, dict_encode, df_lap, df_check)
+    text_list, url_list, tp = responseText(text, model_check, dict_name_common, list_name_laptop, tokenizer, dict_encode, df_lap, df_check)
+    if tp == 3:
+        return text_list 
+        #Một dòng trả về duy nhất
+    if tp == 1:
+        return "Hệ thống tìm kiếm được kết quả sau", text_list, url_list
+        #Trả về title, list laptop câu trả lời phù hợp và url
+    return text_list[0], test_list[1:], url_list
+    #type = 2, Tương tự 1
+    #List thì mỗi câu là một câu in một câu trả lời trong chatbot r bấm vào bay sang trang chi tiết bằng url trong laptop 88
+        
     return text_list
