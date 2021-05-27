@@ -230,7 +230,7 @@ def returnTextByPrice(df_check, df_lap, list_price):
             count += 1
             continue
     if len(ret_lap) == 0:
-        return "Cửa hàng không có laptop nào trong tầm giá {} đồng".format(list_price[0]) if le == 1 else "Cửa hàng không có laptop nào giá từ {} đến {} đồng".format(min(list_price), max(list_price)), None
+        return ["Cửa hàng không có laptop nào trong tầm giá {} đồng".format(list_price[0]) if le == 1 else "Cửa hàng không có laptop nào giá từ {} đến {} đồng".format(min(list_price), max(list_price))], None
     ret_text = ["Kết quả gợi ý {} laptop phù hợp tầm giá {} đồng".format(count, list_price[0]) if le == 1 else "Kết quả gợi ý {} laptop phù hợp giá từ {} đến {} đồng".format(count, min(list_price), max(list_price))]
     for i in range(len(ret_lap)):
         ret_text.append("Laptop {} giá {} đồng".format(ret_lap[i], ret_price[i]))
@@ -269,8 +269,7 @@ def chatBotResponse(text):
     if tp == 1:
         return "Hệ thống tìm kiếm được kết quả sau", text_list, url_list
         #Trả về title, list laptop câu trả lời phù hợp và url
-    return text_list[0], test_list[1:], url_list
+    return text_list[0], None if len(text_list) == 1 else text_list[1:], url_list
     #type = 2, Tương tự 1
     #List thì mỗi câu là một câu in một câu trả lời trong chatbot r bấm vào bay sang trang chi tiết bằng url trong laptop 88
-        
-    return text_list
+       
