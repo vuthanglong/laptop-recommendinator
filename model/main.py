@@ -33,7 +33,7 @@ with open(os.path.join(THIS_FOLDER, 'Load_File/dict_encode.json')) as json_file:
 df_test = pd.read_csv(os.path.join(THIS_FOLDER, 'Load_File/test_data.csv'))
 df_check = pd.read_csv(os.path.join(THIS_FOLDER, "Load_File/Response.csv"))
 df_lap = pd.read_csv(os.path.join(THIS_FOLDER, "Load_File/final_df_laptop.csv"))
-model_fasttext_bin = FastText.load(os.path.join(THIS_FOLDER, "Load_File/model_fasttext_gensim.bin"))
+#model_fasttext_bin = FastText.load(os.path.join(THIS_FOLDER, "Load_File/model_fasttext_gensim.bin"))
 with open(os.path.join(THIS_FOLDER,'Load_File/tokenizer.json')) as f:
     data = json.load(f)
     tokenizer = tokenizer_from_json(data)
@@ -71,7 +71,7 @@ def getTextPrice(text):
        try:
          text = int(text[0]) * 1000000 + int(text[1]) * int(100000 / pow(10, (len(text[1]) - 1)))
        except:
-         text = int(text[0]) * int(1000000 /  pow(10, (len(text[1]) - 1)))
+         text = int(text[0]) * int(1000000 /  pow(10, (len(text[1]))))
        check = True
     except:
         check = False
@@ -154,7 +154,6 @@ def handleInput(text, dict_name_common, list_name_laptop, token, clean=True):
     list_price = None
     if clean:
       text, list_name_lap, list_price = TextProcessing(text, dict_name_common, list_name_laptop)
-      #print(text)
     text = token.texts_to_sequences([text])
     text = pad_sequences(text, maxlen=25, padding="post", truncating="post", value=0)
     text = DataLoader(np.array(text, dtype='f'), 1, shuffle=False)
@@ -165,6 +164,7 @@ def getListLapByName(df_lap, name_lap, name_row = "all"):
     ret_lap = []
     ret_infor = []
     ret_url = []
+    df_lap = df_lap.sample(frac=1).reset_index(drop=True)
     for index, row in df_lap.iterrows():
         if row['Name_clean'] == name_lap:
             ret_lap = [name_lap]
@@ -178,17 +178,63 @@ def getListLapByName(df_lap, name_lap, name_row = "all"):
             count += 1
     return ret_lap, ret_infor, ret_url
 
+def getListLapByDemand(df_lap, demand):
+    ret_lap = []
+    ret_url = []
+    df_lap = df_lap.sample(frac=1).reset_index(drop=True)
+    count = 0
+    for index, row in df_lap.iterrows():
+        if row[demand] == 1:
+            ret_lap.append(row["Name_clean"])
+            ret_url.append(row["Url"])
+            count += 1
+        if count == 8:
+            break
+    return ret_lap, ret_url
+
 def returnText(df_check, lb, ret_lap = None, ret_infor = None, tp = '0'):
     answer = df_check[df_check["Label"] == lb]["Response"].values.tolist() 
     answer = answer[random.randint(0, len(answer) - 1)]
     if tp == '0':
         return answer
     ret_text = []
+    if tp == '1':
+        for each in ret_lap:
+            ret_text.append("Laptop {}".format(each))
+        return ret_text
     for i in range(len(ret_lap)):
         each = answer.replace('{lptp}', ret_lap[i])
-        each = each.replace("{price}" if lb == 'giá_thành' else '{res}', str(ret_infor[i]) + ' đồng' if lb == 'giá_thành' else str(ret_infor[i]))
+        each = each.replace("{price}" if lb == 'giá_thành' else '{res}', str(ret_infor[i]) + ' triệu' if lb == 'giá_thành' else str(ret_infor[i]))
         ret_text.append(each)
     return ret_text
+
+def returnTextByPrice(df_check, df_lap, list_price):
+    le = len(list_price)
+    count = 0
+    ret_lap = []
+    ret_price = []
+    ret_url = []
+    for index, row in df_lap.iterrows():
+        if count == 8:
+            break
+        if le == 1 and row["Price"] - 500000 < list_price[0] and row["Price"] + 500000 > list_price[0]:
+            ret_lap.append(row["Name_clean"])
+            ret_url.append(row["Url"])
+            ret_price.append(row["Price"])
+            count += 1
+            continue
+        if le != 1 and row["Price"] <= max(list_price) and row["Price"] >= min(list_price):
+            ret_lap.append(row["Name_clean"])
+            ret_url.append(row["Url"])
+            ret_price.append(row["Price"])
+            count += 1
+            continue
+    if len(ret_lap) == 0:
+        return "Cửa hàng không có laptop nào trong tầm giá {} đồng".format(list_price[0]) if le == 1 else "Cửa hàng không có laptop nào giá từ {} đến {} đồng".format(min(list_price), max(list_price)), None
+    ret_text = ["Kết quả gợi ý {} laptop phù hợp tầm giá {} đồng".format(count, list_price[0]) if le == 1 else "Kết quả gợi ý {} laptop phù hợp giá từ {} đến {} đồng".format(count, min(list_price), max(list_price))]
+    for i in range(len(ret_lap)):
+        ret_text.append("Laptop {} giá {} đồng".format(ret_lap[i], ret_price[i]))
+    return ret_text, ret_url
 
 def responseText(text, model, dict_name_common, list_name_laptop, token, dict_encode, df_lap, df_check):
     text, list_laptop, list_price= handleInput(text, dict_name_common, list_name_laptop, token, clean=True)
@@ -199,10 +245,18 @@ def responseText(text, model, dict_name_common, list_name_laptop, token, dict_en
     lb = dict_encode[str(lb[0])]
     #print(lb)
     dict_type_1 = {"giá_thành":"Price", "cấu_hình chung":"all", "màn_hình": "Screen", "cpu":"CPU", "gpu":"Card", "ram":"RAM", "ổ_cứng":"Hardware"}
+    dict_type_2 = {'mua máy chơi game':"Gamming", 'mua máy vè ngoài':"Đẹp", 'mua máy sinh_viên':"Sinh viên", 'mua máy đời cũ':"Secondhand", 'mua máy phổ_biến':'Phổ biến'}
     if lb in dict_type_1:
        ret_lap, ret_infor, ret_url = getListLapByName(df_lap, list_laptop, dict_type_1[lb])
        ret_text = returnText(df_check, lb, ret_lap, ret_infor, '1')
        return ret_text, ret_url
+    elif lb in dict_type_2:
+       ret_lap, ret_url = getListLapByDemand(df_lap, dict_type_2[lb])
+       ret_text = returnText(df_check, lb, ret_lap, tp = '1')
+       ret_text = [*["Kết quả {} gợi ý cho laptop {}".format(len(ret_text), dict_type_2[lb].lower())], *ret_text]
+       return ret_text, ret_url
+    elif lb == 'mua máy khoảng giá':
+       return returnTextByPrice(df_check, df_lap, list_price)
     else:
        return returnText(df_check, lb), None
        
