@@ -247,8 +247,10 @@ def responseText(text, model, dict_name_common, list_name_laptop, token, dict_en
     dict_type_1 = {"giá_thành":"Price", "cấu_hình chung":"all", "màn_hình": "Screen", "cpu":"CPU", "gpu":"Card", "ram":"RAM", "ổ_cứng":"Hardware"}
     dict_type_2 = {'mua máy chơi game':"Gamming", 'mua máy vè ngoài':"Đẹp", 'mua máy sinh_viên':"Sinh viên", 'mua máy đời cũ':"Secondhand", 'mua máy phổ_biến':'Phổ biến'}
     if lb in dict_type_1:
+       if type(list_laptop) == list:
+          return "Bạn cần nêu ra tên laptop muốn tìm hiểu của mình", None, 1
        ret_lap, ret_infor, ret_url = getListLapByName(df_lap, list_laptop, dict_type_1[lb])
-       ret_text = returnText(df_check, lb, ret_lap, ret_infor, '1')
+       ret_text = returnText(df_check, lb, ret_lap, ret_infor, '2')
        return ret_text, ret_url, 1
     elif lb in dict_type_2:
        ret_lap, ret_url = getListLapByDemand(df_lap, dict_type_2[lb])
@@ -264,9 +266,12 @@ def responseText(text, model, dict_name_common, list_name_laptop, token, dict_en
 def chatBotResponse(text):
     text_list, url_list, tp = responseText(text, model_check, dict_name_common, list_name_laptop, tokenizer, dict_encode, df_lap, df_check)
     if tp == 3:
-        return text_list 
+        return text_list, None, None 
         #Một dòng trả về duy nhất
     if tp == 1:
+        if type(text_list) == str:
+            return text_list, None, None
+            #Khi không nhập tên laptop, ví dụ Laptop có giá bao nhiêu thay vì laptop hp 15s có giá bao nhiêu
         return "Hệ thống tìm kiếm được kết quả sau", text_list, url_list
         #Trả về title, list laptop câu trả lời phù hợp và url
     return text_list[0], None if len(text_list) == 1 else text_list[1:], url_list
