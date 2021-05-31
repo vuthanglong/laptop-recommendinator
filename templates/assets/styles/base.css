@@ -70,6 +70,12 @@ input[type='reset'] {
   outline: inherit;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 #container {
   position: relative;
   width: 375px;
@@ -126,19 +132,19 @@ input[type='reset'] {
 }
 
 .question_container {
-    display: inline-block;
+  display: inline-block;
 }
 
 .question_content {
-    color: var(--second_font_color);
-    background-color: var(--third_background_color);
-    font-size: 15px;
-    border-radius: 10px;
-    padding: 10px;
-    margin-block-end: 10px;
-    cursor: pointer;
-    overflow-wrap: break-word;
-    max-width: 100%;
+  color: var(--second_font_color);
+  background-color: var(--third_background_color);
+  font-size: 15px;
+  border-radius: 10px;
+  padding: 10px;
+  margin-block-end: 10px;
+  cursor: pointer;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 /*.product-container {

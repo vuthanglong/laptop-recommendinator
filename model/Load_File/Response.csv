@@ -1,7 +1,7 @@
 ,Label,Response
 0,chào_hỏi chung_chung,"chào bạn, mình có thể giúp gì được cho bạn nhỉ?"
 1,chào_hỏi chung_chung,"xin chào, bạn muốn nhờ tôi tư vấn điều gì ạ?"
-2,chào_hỏi chung_chung,"chào {name}, làm ơn hãy đặt câu hỏi cho tôi?"
+2,chào_hỏi chung_chung,"chào bạn, làm ơn hãy đặt câu hỏi cho tôi?"
 3,chào_hỏi chung_chung,"chào bạn, mình có thể giải đáp mọi thắc mắc của bạn đấy"
 4,hỏi tình_trạng hoạt_động của cửa_hàng,cửa hàng hoạt động liên tục từ 7h sáng đến 17h chiều nhé bạn
 5,hỏi tình_trạng hoạt_động của cửa_hàng,"bạn có vấn đề gì thì cứ đặt câu hỏi ạ, bên mình hoạt động đến 17h chiều"
